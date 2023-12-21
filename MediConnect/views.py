@@ -107,3 +107,33 @@ def patient_registration(request):
                 return render(request, 'ok.html')
             else:
                 return HttpResponse('新しい日付を入力してください。')
+
+
+def patient_all(request):
+    if Patient.objects.exists():
+        return render(request, 'patient/P102/patientAll.html', {'patients': Patient.objects.all()})
+    else:
+        return HttpResponse("データベースは空です。")
+
+
+def patient_update(request):
+    if request.method == 'GET':
+        return render(request, 'patient/P102/patientUpdate.html', {
+            'patId': request.GET['patId'],
+            'patFname': request.GET['patFname'],
+            'patLname': request.GET['patLname'],
+            'hokenmei': request.GET['hokenmei'],
+            'hokenexp': request.GET['hokenexp'],
+        })
+
+    if request.method == 'POST':
+        hokenexp = datetime.strptime(request.POST['hokenexp'], "%Y-%m-%d").date()
+
+        if not hokenexp:
+            return HttpResponse('日付を入力してください。')
+
+        if hokenexp > datetime.strptime(request.POST['oldhokenexp'], "%Y-%m-%d").date():
+            Patient.objects.filter(patid=request.POST['patId']).update(hokenmei=request.POST['hokenmei'], hokenexp=hokenexp)
+            return render(request, 'ok.html')
+        else:
+            return HttpResponse('新しい日付を入力してください。')
