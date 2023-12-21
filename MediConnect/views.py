@@ -57,3 +57,12 @@ def register(request):
 
 def hospital_list(request):
     return render(request, 'hospital/H102/hospital_list.html', {'hospitals': Tabyouin.objects.all()})
+
+
+def tel_change(request):
+    if request.method == 'GET':
+        return render(request, 'hospital/H105/telChange.html', {'tabyouinid': request.GET['tabyouinid']})
+
+    if request.method == 'POST':
+        Tabyouin.objects.filter(tabyouinid=request.POST['tabyouinid']).update(tabyouintel=request.POST['tel'])
+        return render(request, 'ok.html')

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>パスワードの変更</h1>
+<label>新しいパスワードを入力してください</label><br>
+<form action="{% url 'tel_change' %}" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="tabyouinid" value="{{ tabyouinid }}">
+    電話番号:<input type="number" name="tel" required><br>
+    <input type="submit" value="変更">
+</form>
+</body>
+</html>

@@ -14,6 +14,7 @@
         <th>電話番号</th>
         <th>資本金</th>
         <th>救急対応</th>
+        <th>変更</th>
     </tr>
     {% for hospital in hospitals %}
         <tr>
@@ -23,6 +24,13 @@
             <td>{{ hospital.tabyouintel }}</td>
             <td>{{ hospital.tabyouinshihonkin }}</td>
             <td>{{ hospital.kyukyu }}</td>
+            <td>
+                <form action="{% url 'tel_change' %}" method="get">
+                    {% csrf_token %}
+                    <input type="hidden" name="tabyouinid" value="{{ hospital.tabyouinid }}">
+                    <input type="submit" value="変更">
+                </form>
+            </td>
         </tr>
     {% endfor %}
 </table>
