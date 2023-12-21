@@ -2,7 +2,7 @@ from datetime import datetime
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.db.models import Q
-from MediConnect.models import Employee, Tabyouin, Patient
+from MediConnect.models import Employee, Tabyouin, Patient, Medicine, Treatment
 
 
 def index(request):
@@ -153,3 +153,42 @@ def patient_search_by_name(request):
 
         return render(request, 'patient/P103/search_results.html', {'patients': matching_patients})
 
+
+def patient_search(request):
+    if request.method == 'GET':
+        return render(request, 'patient/P105/patientSearchResult.html', {'patients': Patient.objects.all()})
+
+
+def treatment_selection(request):
+    if request.method == 'GET':
+        return render(request, 'treatment/D101/treatmentSelection.html', {
+            'medicines': Medicine.objects.all(),
+            'patId': request.GET['patId'],
+        })
+
+    if request.method == 'POST':
+        return render(request, 'treatment/D101/treatmentSelectionResult.html', {
+            'patId': request.POST['patId'],
+            'medicineId': request.POST['medicineId'],
+            'quantity': int(request.POST['quantity']),
+            'impDate': datetime.strptime(request.POST['impDate'], "%Y-%m-%d").date(),
+        })
+
+
+def treatment_delete(request):
+    if request.method == 'POST':
+        return render(request, 'ok.html')
+
+
+def treatment_confirmation(request):
+    if request.method == 'POST':
+        try:
+            Treatment(patid=request.POST['patId'],
+                      medicineid=request.POST['medicineId'],
+                      quantity=request.POST['quantity'],
+                      impdate=datetime.strptime(request.POST['impDate'], '%Y-%m-%d').date()).save()
+        except Exception as e:
+            print(e)
+            return HttpResponse('エラー')
+
+        return render(request, 'ok.html')
