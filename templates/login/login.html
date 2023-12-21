@@ -3,13 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <title>ログイン</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            margin: 10px 0;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            width: 200px;
+        }
+
+        input[type="submit"] {
+            background-color: #5c87a6;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            color: #5c87a6;
+            background-color: #ffffff;
+            border: 1px solid #5c87a6;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 1s;
+        }
+    </style>
 </head>
 <body>
-<h2>ログイン</h2>
+<h2><span style="font-family: 'Times New Roman',serif; font-size: 30px;">ログイン画面</span></h2>
 <form method="post" action="{% url 'login' %}">
     {% csrf_token %}
-    ユーザーID:<input type="text" name="empId"><br>
-    パスワード:<input type="password" name="empPasswd"><br>
+    ユーザーID:<input type="text" size="100" style="width:300px; height:40px" name="empId" class="form-control" placeholder="例：2070077" autofocus required><br>
+    パスワード:<input type="password" size="100"  style="width:300px; height:40px" name="empPasswd"  class="form-control" placeholder="例：22222222" autofocus required><br>
     <input type="submit" value="ログイン">
 </form>
 </body>
