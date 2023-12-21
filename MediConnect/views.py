@@ -66,3 +66,15 @@ def tel_change(request):
     if request.method == 'POST':
         Tabyouin.objects.filter(tabyouinid=request.POST['tabyouinid']).update(tabyouintel=request.POST['tel'])
         return render(request, 'ok.html')
+
+
+def hospital_search(request):
+    if request.method == 'GET':
+        return render(request, 'hospital/H104/hospitalSearch.html')
+
+    if request.method == 'POST':
+        shihonkin = request.POST['shihonkin']
+        if shihonkin == '':
+            shihonkin = 0
+        return render(request, 'hospital/H104/hospitalSearchResult.html',
+                      {'hospitals': Tabyouin.objects.filter(tabyouinshihonkin__gt=shihonkin)})
