@@ -38,3 +38,18 @@ def welcome(request):
 def logout(request):
     request.session.flush()
     return render(request, 'login/logout.html')
+
+
+def register(request):
+    if request.method == 'GET':
+        return render(request, 'employee/E101/register.html')
+
+    if request.method == 'POST':
+        empId = request.POST['empId']
+
+        if Employee.objects.filter(empid=empId).exists():
+            return HttpResponse('IDが一致しています')
+        else:
+            Employee(empid=empId, empfname=request.POST['fName'], emplname=request.POST['lName'],
+                     emppasswd=request.POST['empPasswd'], emprole=int(request.POST['empRole'])).save()
+            return render(request, 'ok.html')
