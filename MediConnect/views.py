@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from MediConnect.models import Employee
+from MediConnect.models import Employee, Tabyouin
 
 
 def index(request):
@@ -53,3 +53,7 @@ def register(request):
             Employee(empid=empId, empfname=request.POST['fName'], emplname=request.POST['lName'],
                      emppasswd=request.POST['empPasswd'], emprole=int(request.POST['empRole'])).save()
             return render(request, 'ok.html')
+
+
+def hospital_list(request):
+    return render(request, 'hospital/H102/hospital_list.html', {'hospitals': Tabyouin.objects.all()})

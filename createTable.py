@@ -19,3 +19,11 @@ employee_data = [
 
 for data in employee_data:
     models.Employee.objects.create(**data)
+
+tabyouin_data = [
+    {"tabyouinid": "1", "tabyouinmei": "nyt", "tabyouinaddres": "thrah", "tabyouintel": "090-1234-1234", "tabyouinshihonkin": 11, "kyukyu": 0},
+    {"tabyouinid": "0000", "tabyouinmei": "test", "tabyouinaddres": "広島県広島市南区比治山本町１６−３５", "tabyouintel": "111-1111-1111", "tabyouinshihonkin": 100, "kyukyu": 0},
+    {"tabyouinid": "0001", "tabyouinmei": "aaaa", "tabyouinaddres": "hiro", "tabyouintel": "111-1111-1111", "tabyouinshihonkin": 9999, "kyukyu": 1},
+]
+for data in tabyouin_data:
+    models.Tabyouin.objects.create(**data)
