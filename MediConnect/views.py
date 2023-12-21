@@ -78,3 +78,12 @@ def hospital_search(request):
             shihonkin = 0
         return render(request, 'hospital/H104/hospitalSearchResult.html',
                       {'hospitals': Tabyouin.objects.filter(tabyouinshihonkin__gt=shihonkin)})
+
+
+def pw_change(request):
+    if request.method == 'GET':
+        return render(request, 'employee/E103/pwChange.html')
+
+    if request.method == 'POST':
+        Employee.objects.filter(empid=request.session['empId']).update(emppasswd=request.POST['empPasswd1'])
+        return render(request, 'ok.html')
