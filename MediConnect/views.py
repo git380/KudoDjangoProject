@@ -192,3 +192,10 @@ def treatment_confirmation(request):
             return HttpResponse('エラー')
 
         return render(request, 'ok.html')
+
+
+def treatment_list(request):
+    if Treatment.objects.exists():
+        return render(request, 'treatment/D104/treatmentList.html', {'treatments': Treatment.objects.all()})
+    else:
+        return HttpResponse("データベースは空です。")
