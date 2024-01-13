@@ -5,12 +5,102 @@
     <title>他病院住所検索</title>
 </head>
 <body>
+ <style>
+        header{
+            margin-top: 30px;
+            color: #43A047;
+        }
+        hr{
+            border-width: 3px;
+            border-color: #43A047;
+        }
+        h1{
+            font-size: 25px;
+            font-weight: bold;
+            margin: 0;
+            text-align: center;
+        }
+
+        footer p{
+            text-align: center;
+        }
+        input:required{
+            background: #ffcdd2;
+        }
+        input[type="email"]:invalid{
+            background: #ffcdd2;
+        }
+        input:valid{
+            background: transparent;
+        }
+        input:focus{
+            background: #DCEDC8;
+
+
+        }
+        input[type="submit"] {
+            width: 20%;
+            font-size: 15px;
+            color: #fff;
+            display: inline-block;
+            padding: 15px 0px;
+            text-align: center;
+            background-color: #5c87a6;
+            border: 1px solid #5c87a6;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 1s;
+        }
+
+        /*--hover--*/
+        input[type="submit"]:hover {
+            color: #5c87a6;
+            background-color: #ffffff;
+            border: 1px solid #5c87a6;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 1s;
+        }
+        *,
+        *:before,
+        *:after {
+            -webkit-box-sizing: inherit;
+            box-sizing: inherit;
+        }
+
+        html {
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            font-size: 62.5%;
+        }
+           *,
+        *:before,
+        *:after {
+            -webkit-box-sizing: inherit;
+            box-sizing: inherit;
+        }
+
+        html {
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            font-size: 62.5%;
+        }
+
+        /* 背景用*/
+        body {
+            padding: 30px;
+        }
+
+    </style>
+        
 <h1>他病院住所検索</h1>
 <form action="{% url 'hospital_search' %}" method="post">
     {% csrf_token %}
-    <label for="shihonkin">資本金:</label>
-    <input type="number" id="shihonkin" name="shihonkin"><br>
-    <input type="submit" value="検索">
+    <div style="text-align: center;"><span style="font-size: 30px;"><label for="shihonkin">資本金:</label></span></div>
+    <div style="text-align: center;"><span style="font-size: 30px;"><input type="number"size="100"  style="width:300px; height:40px" id="shihonkin" name="shihonkin"><br></span></div><br>
+    <div style="text-align: center;"><input type="submit" value="検索"></div>
 </form>
 </body>
 </html>
+        

@@ -5,20 +5,104 @@
     <title>患者登録</title>
 </head>
 <body>
+<style>
+    header{
+        margin-top: 30px;
+        color: #43A047;
+    }
+    hr{
+        border-width: 3px;
+        border-color: #43A047;
+    }
+    h1{
+        font-size: 25px;
+        font-weight: bold;
+        margin: 0;
+        text-align: center;
+    }
+
+    footer p{
+        text-align: center;
+    }
+    input:required{
+        background: #ffcdd2;
+    }
+    input[type="email"]:invalid{
+        background: #ffcdd2;
+    }
+    input:valid{
+        background: transparent;
+    }
+    input:focus{
+        background: #DCEDC8;
+
+
+    }
+    input[type="submit"] {
+        width: 20%;
+        font-size: 15px;
+        color: #fff;
+        display: inline-block;
+        padding: 15px 0px;
+        text-align: center;
+        background-color: #5c87a6;
+        border: 1px solid #5c87a6;
+        border-radius: 5px;
+        text-decoration: none;
+        cursor: pointer;
+        transition: background-color 1s;
+    }
+
+    input[type="submit"] {
+        width: 20%;
+        font-size: 15px;
+        color: #fff;
+        display: inline-block;
+        padding: 15px 0px;
+        text-align: center;
+        background-color: #5c87a6;
+        border: 1px solid #5c87a6;
+        border-radius: 5px;
+        text-decoration: none;
+        cursor: pointer;
+        transition: background-color 1s;
+    }
+
+    /*--hover--*/
+    input[type="submit"]:hover {
+        color: #5c87a6;
+        background-color: #ffffff;
+        border: 1px solid #5c87a6;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 1s;
+    }
+    *,
+    *:before,
+    *:after {
+        -webkit-box-sizing: inherit;
+        box-sizing: inherit;
+    }
+    </style>
 <h1>患者登録</h1>
 <form action="{% url 'patient_registration' %}" method="post">
     {% csrf_token %}
-    <label for="empId">患者ID:</label>
-    <input type="text" id="empId" name="patId"><br>
-    <label for="patFname">名:</label>
-    <input type="text" id="patFname" name="patFname"><br>
-    <label for="patLname">姓:</label>
-    <input type="text" id="patLname" name="patLname"><br>
-    <label for="hokenmei">保険証記号番号:</label>
-    <input type="text" id="hokenmei" name="hokenmei"><br>
-    <label for="hokenexp">有効期限:</label>
-    <input type="date" id="hokenexp" name="hokenexp"><br>
-    <input type="submit" value="登録" disabled>
+    <div style="text-align: center;"> <label for="empId">患者ID:</label></div>
+    <div class="container" style="text-align: center"> <input type="text" size="100"  style="width:300px; height:40px"  id="empId" name="patId"><br></div>
+    
+    <div style="text-align: center;"> <label for="patFname">名:</label></div>
+    <div class="container" style="text-align: center"> <input type="text" size="100"  style="width:300px; height:40px" id="patFname" name="patFname"><br></div>
+   
+    <div style="text-align: center;"><label for="patLname">姓:</label></div>
+    <div class="container" style="text-align: center"> <input type="text" size="100"  style="width:300px; height:40px" id="patLname" name="patLname"><br></div>
+   
+    <div style="text-align: center;"> <label for="hokenmei">保険証記号番号:</label></div>
+    <div class="container" style="text-align: center"><input type="text" size="100"  style="width:300px; height:40px" id="hokenmei" name="hokenmei"><br></div>
+    
+    <div style="text-align: center;">  <label for="hokenexp">有効期限:</label></div>
+    <div class="container" style="text-align: center"> <input type="date"  size="100"  style="width:300px; height:40px" id="hokenexp" name="hokenexp"><br></div>
+   
+    <div style="text-align: center;"> <input type="submit" value="登録" disabled></div>
 </form>
 <script>
     const form = document.querySelector('form');

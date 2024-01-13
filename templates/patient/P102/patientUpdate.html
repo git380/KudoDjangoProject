@@ -5,31 +5,110 @@
     <title>患者保険情報変更</title>
 </head>
 <body>
+<style>
+    header{
+        margin-top: 30px;
+        color: #43A047;
+    }
+    hr{
+        border-width: 3px;
+        border-color: #43A047;
+    }
+    h1{
+        font-size: 25px;
+        font-weight: bold;
+        margin: 0;
+        text-align: center;
+    }
+
+    footer p{
+        text-align: center;
+    }
+    input:required{
+        background: #ffcdd2;
+    }
+    input[type="email"]:invalid{
+        background: #ffcdd2;
+    }
+    input:valid{
+        background: transparent;
+    }
+    input:focus{
+        background: #DCEDC8;
+
+
+    }
+    input[type="submit"] {
+        width: 20%;
+        font-size: 15px;
+        color: #fff;
+        display: inline-block;
+        padding: 15px 0px;
+        text-align: center;
+        background-color: #5c87a6;
+        border: 1px solid #5c87a6;
+        border-radius: 5px;
+        text-decoration: none;
+        cursor: pointer;
+        transition: background-color 1s;
+    }
+
+    input[type="submit"] {
+        width: 20%;
+        font-size: 15px;
+        color: #fff;
+        display: inline-block;
+        padding: 15px 0px;
+        text-align: center;
+        background-color: #5c87a6;
+        border: 1px solid #5c87a6;
+        border-radius: 5px;
+        text-decoration: none;
+        cursor: pointer;
+        transition: background-color 1s;
+    }
+
+    /*--hover--*/
+    input[type="submit"]:hover {
+        color: #5c87a6;
+        background-color: #ffffff;
+        border: 1px solid #5c87a6;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 1s;
+    }
+    *,
+    *:before,
+    *:after {
+        -webkit-box-sizing: inherit;
+        box-sizing: inherit;
+    }
+    </style>
 <h1>患者保険情報変更</h1>
 <form action="{% url 'patient_update' %}" method="post">
     {% csrf_token %}
-    <input type="hidden" name="patId" value="{{ patId }}">
-    <input type="hidden" name="patFname" value="{{ patFname }}">
-    <input type="hidden" name="patLname" value="{{ patLname }}">
-    <input type="hidden" name="oldhokenexp" value="{{ hokenexp }}">
+    <div style="text-align: center;"><input type="hidden" name="patId" value="{{ patId }}"></div>
+    <div style="text-align: center;"> <input type="hidden" name="patFname" value="{{ patFname }}"></div>
+    <div style="text-align: center;"><input type="hidden" name="patLname" value="{{ patLname }}"></div>
+    <div style="text-align: center;"><input type="hidden" name="oldhokenexp" value="{{ hokenexp }}"></div>
 
-    患者ID: {{ patId }}<br>
-    姓: {{ patFname }}<br>
-    名: {{ patLname }}<br>
+    <div style="text-align: center;"> 患者ID: {{ patId }}<br></div>
+    <div style="text-align: center;">  姓: {{ patFname }}<br></div>
+    <div style="text-align: center;"> 名: {{ patLname }}<br></div><br>
 
-    <label for="hokenmei">保険証記号番号:</label>
-    <input type="hidden" id="hihokenmei" name="hokenmei" value="{{ hokenmei }}">
-    <input type="text" id="hokenmei" name="hokenmei" value="{{ hokenmei }}">
-    <input type="checkbox" id="meicheckbox" name="checkbox"
+    <div style="text-align: center;"><label for="hokenmei">保険証記号番号:</label></div>
+    <div style="text-align: center;"><input type="hidden" id="hihokenmei" name="hokenmei" value="{{ hokenmei }}"></div>
+    <div style="text-align: center;"><input type="text" id="hokenmei" name="hokenmei" value="{{ hokenmei }}"></div>
+     <div style="text-align: center;"><input type="checkbox" id="meicheckbox" name="checkbox"
            onchange="
            document.getElementById('hihokenmei').disabled = this.checked;
            document.getElementById('hokenmei').disabled = !this.checked;
-         ">変更する<br>
+         ">変更する<br></div><br>
 
-    <label for="hokenexp">有効期限:</label>
-    <input type="date" id="hokenexp" name="hokenexp" value="{{ hokenexp }}"><br>
+    <div style="text-align: center;"> <label for="hokenexp">有効期限:</label></div>
+    <div style="text-align: center;"> <input type="date" id="hokenexp" name="hokenexp" value="{{ hokenexp }}"><br></div><br>
 
-    <input type="submit" value="変更">
+    <div style="text-align: center;"><input type="submit" value="変更"></div>
 </form>
 <script>
     document.getElementById('hokenmei').disabled = true;

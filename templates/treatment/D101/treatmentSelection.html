@@ -5,7 +5,7 @@
     <title>薬投与指示画面</title>
 </head>
 <body>
-<h1>薬投与指示画面</h1>
+<h1>薬投与指示画面</h1>                                                    
 <form action="{% url 'treatment_selection' %}" method="post">
     {% csrf_token %}
     患者ID: {{ patId }}<br>
@@ -18,7 +18,7 @@
     </select><br>
     数量:<input type="number" name="quantity" min="0"><br>
     実施日:<input type="date" name="impDate"><br>
-    <input type="submit" value="処置指示" disabled>
+    <div style="text-align: center;"> <input type="submit" value="処置指示" disabled></div>
 </form>
 <script>
     const form = document.querySelector('form');

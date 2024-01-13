@@ -5,13 +5,92 @@
     <title>Title</title>
 </head>
 <body>
+<style>
+    header{
+        margin-top: 30px;
+        color: #43A047;
+    }
+    hr{
+        border-width: 3px;
+        border-color: #43A047;
+    }
+    h1{
+        font-size: 25px;
+        font-weight: bold;
+        margin: 0;
+        text-align: center;
+    }
+
+    footer p{
+        text-align: center;
+    }
+    input:required{
+        background: #ffcdd2;
+    }
+    input[type="email"]:invalid{
+        background: #ffcdd2;
+    }
+    input:valid{
+        background: transparent;
+    }
+    input:focus{
+        background: #DCEDC8;
+
+
+    }
+    input[type="submit"] {
+        width: 20%;
+        font-size: 15px;
+        color: #fff;
+        display: inline-block;
+        padding: 15px 0px;
+        text-align: center;
+        background-color: #5c87a6;
+        border: 1px solid #5c87a6;
+        border-radius: 5px;
+        text-decoration: none;
+        cursor: pointer;
+        transition: background-color 1s;
+    }
+
+    input[type="submit"] {
+        width: 20%;
+        font-size: 15px;
+        color: #fff;
+        display: inline-block;
+        padding: 15px 0px;
+        text-align: center;
+        background-color: #5c87a6;
+        border: 1px solid #5c87a6;
+        border-radius: 5px;
+        text-decoration: none;
+        cursor: pointer;
+        transition: background-color 1s;
+    }
+
+    /*--hover--*/
+    input[type="submit"]:hover {
+        color: #5c87a6;
+        background-color: #ffffff;
+        border: 1px solid #5c87a6;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 1s;
+    }
+    *,
+    *:before,
+    *:after {
+        -webkit-box-sizing: inherit;
+        box-sizing: inherit;
+    }
+    </style>
 <h1>電話番号の変更</h1>
-<label>新しい電話番号を入力してください</label><br>
+　 <div class="container" style="text-align: center;"><label>新しい電話番号を入力してください</label></div><br>
 <form action="{% url 'tel_change' %}" method="post">
     {% csrf_token %}
-    <input type="hidden" name="tabyouinid" value="{{ tabyouinid }}">
-    電話番号:<input type="number" name="tel" required><br>
-    <input type="submit" value="変更">
+    　　　 <div class="container" style="text-align: center;"><input type="hidden" name="tabyouinid" value="{{ tabyouinid }}"></div>
+    　　　 <div class="container" style="text-align: center;"> 電話番号:</div> 　　　 <div class="container" style="text-align: center;"><input type="number" size="100"  style="width:300px; height:40px"name="tel" required><br></div>
+    　　　 <div class="container" style="text-align: center;"> <input type="submit" value="変更"></div>
 </form>
 </body>
 </html>

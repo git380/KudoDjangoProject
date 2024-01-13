@@ -5,23 +5,102 @@
     <title>処置確定画面</title>
 </head>
 <body>
+<style>
+    header{
+        margin-top: 30px;
+        color: #43A047;
+    }
+    hr{
+        border-width: 3px;
+        border-color: #43A047;
+    }
+    h1{
+        font-size: 25px;
+        font-weight: bold;
+        margin: 0;
+        text-align: center;
+    }
+
+    footer p{
+        text-align: center;
+    }
+    input:required{
+        background: #ffcdd2;
+    }
+    input[type="email"]:invalid{
+        background: #ffcdd2;
+    }
+    input:valid{
+        background: transparent;
+    }
+    input:focus{
+        background: #DCEDC8;
+
+
+    }
+    input[type="submit"] {
+        width: 20%;
+        font-size: 15px;
+        color: #fff;
+        display: inline-block;
+        padding: 15px 0px;
+        text-align: center;
+        background-color: #5c87a6;
+        border: 1px solid #5c87a6;
+        border-radius: 5px;
+        text-decoration: none;
+        cursor: pointer;
+        transition: background-color 1s;
+    }
+
+    input[type="submit"] {
+        width: 20%;
+        font-size: 15px;
+        color: #fff;
+        display: inline-block;
+        padding: 15px 0px;
+        text-align: center;
+        background-color: #5c87a6;
+        border: 1px solid #5c87a6;
+        border-radius: 5px;
+        text-decoration: none;
+        cursor: pointer;
+        transition: background-color 1s;
+    }
+
+    /*--hover--*/
+    input[type="submit"]:hover {
+        color: #5c87a6;
+        background-color: #ffffff;
+        border: 1px solid #5c87a6;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 1s;
+    }
+    *,
+    *:before,
+    *:after {
+        -webkit-box-sizing: inherit;
+        box-sizing: inherit;
+    }
+    </style>
 <h1>処置確定画面</h1>
-<p>以下の処置情報を確定しますか？</p>
-<p>患者ID: {{ patId }}</p>
-<p>薬剤ID: {{ medicineId }}</p>
-<p>数量: {{ quantity }}</p>
-<p>実施日: {{ impDate }}</p>
+<div style="text-align: center;"><p>以下の処置情報を確定しますか？</p></div>
+<div style="text-align: center;"><p>患者ID: {{ patId }}</p></div>
+<div style="text-align: center;"><p>薬剤ID: {{ medicineId }}</p></div>
+<div style="text-align: center;"><p>数量: {{ quantity }}</p></div>
+<div style="text-align: center;"><p>実施日: {{ impDate }}</p></div>
 <form action="{% url 'treatment_confirmation' %}" method="post">
     {% csrf_token %}
     <input type="hidden" name="patId" value="{{ patId }}">
     <input type="hidden" name="medicineId" value="{{ medicineId }}">
     <input type="hidden" name="quantity" value="{{ quantity }}">
     <input type="hidden" name="impDate" value="{{ impDate|date:'Y-m-d' }}">
-    <input type="submit" value="処置確定">
+    <div style="text-align: center;"> <input type="submit" value="処置確定"></div><br>
 </form>
 <form action="{% url 'treatment_delete' %}" method="post">
     {% csrf_token %}
-    <input type="submit" value="削除">
+    <div style="text-align: center;"> <input type="submit" value="削除"></div>
 </form>
 </body>
 </html>
