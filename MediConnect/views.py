@@ -56,6 +56,16 @@ def register(request):
                      emppasswd=request.POST['empPasswd'], emprole=int(request.POST['empRole'])).save()
             return render(request, 'ok.html')
 
+def admin_search(request):
+    if request.method == 'GET':
+        employeeList = Employee.objects.filter(emprole=1)
+        if employeeList.exists():
+            return render(request, 'employee/E104/adminList.html', {'employeeList': employeeList})
+        else:
+            return HttpResponse('管理者が見つかりません')
+
+    if request.method == 'POST':
+        return render(request, 'employee/E103/pwChange.html', {'empId': request.POST['empId']})
 
 def employee_search(request):
     if request.method == 'GET':
