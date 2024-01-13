@@ -57,6 +57,34 @@ def register(request):
             return render(request, 'ok.html')
 
 
+def employee_search(request):
+    if request.method == 'GET':
+        employeeList = Employee.objects.exclude(emprole=1)
+        if employeeList.exists():
+            return render(request, 'employee/E102/employeeList.html', {'employeeList': employeeList})
+        else:
+            return HttpResponse('従業員が見つかりません')
+
+    if request.method == 'POST':
+        return render(request, 'employee/E102/employeeUpdate.html', {'empId': request.POST['empId']})
+
+
+def employee_update(request):
+    if request.method == 'POST':
+        empFName = request.POST['empFName']
+        empLName = request.POST['empLName']
+        if empFName and empLName:
+            Employee.objects.filter(empid=request.POST['empId']).update(empfname=empFName, emplname=empLName)
+            return render(request, 'ok.html')
+        else:
+            return HttpResponse('エラー')
+
+
+def employee_pw_change(request):
+    if request.method == 'POST':
+        return render(request, 'employee/E103/pwChange.html', {'empId': request.POST['empId']})
+
+
 def hospital_list(request):
     return render(request, 'hospital/H102/hospital_list.html', {'hospitals': Tabyouin.objects.all()})
 
