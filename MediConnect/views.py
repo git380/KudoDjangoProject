@@ -166,12 +166,12 @@ def patient_update(request):
         })
 
     if request.method == 'POST':
-        hokenexp = datetime.strptime(request.POST['hokenexp'], "%Y-%m-%d").date()
+        hokenexp = datetime.strptime(request.POST['hokenexp'], "%Y-%m-%d")
 
         if not hokenexp:
             return HttpResponse('日付を入力してください。')
 
-        if hokenexp > datetime.strptime(request.POST['oldhokenexp'], "%Y-%m-%d").date():
+        if hokenexp > datetime.now():
             Patient.objects.filter(patid=request.POST['patId']).update(hokenmei=request.POST['hokenmei'], hokenexp=hokenexp)
             return render(request, 'ok.html')
         else:
